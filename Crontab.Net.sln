@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crontab.Net", "Crontab.Net\Crontab.Net.csproj", "{C43D85D3-46B9-4090-9F9C-362573A92ED2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crontab.Net.Terminal", "Crontab.Net.Terminal\Crontab.Net.Terminal.csproj", "{8DF97549-EC2F-4C5C-9C94-5E99BDB6F630}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crontab.Net.Tests", "Crontab.Net.Tests\Crontab.Net.Tests.csproj", "{73B6974E-0504-4E4B-8E67-93B6C93D17EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C43D85D3-46B9-4090-9F9C-362573A92ED2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C43D85D3-46B9-4090-9F9C-362573A92ED2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C43D85D3-46B9-4090-9F9C-362573A92ED2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C43D85D3-46B9-4090-9F9C-362573A92ED2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DF97549-EC2F-4C5C-9C94-5E99BDB6F630}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DF97549-EC2F-4C5C-9C94-5E99BDB6F630}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DF97549-EC2F-4C5C-9C94-5E99BDB6F630}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DF97549-EC2F-4C5C-9C94-5E99BDB6F630}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73B6974E-0504-4E4B-8E67-93B6C93D17EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73B6974E-0504-4E4B-8E67-93B6C93D17EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73B6974E-0504-4E4B-8E67-93B6C93D17EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73B6974E-0504-4E4B-8E67-93B6C93D17EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
