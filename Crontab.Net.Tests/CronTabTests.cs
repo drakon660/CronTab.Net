@@ -8,7 +8,7 @@ public class UnitTest1
     public async Task Test1()
     {
         var text = File.ReadAllText("cron.list");
-        var list = await CronList.From(text);
+        var list = await CronList.FromAsync(text);
 
         list.Items.Should().NotBeEmpty();
     }

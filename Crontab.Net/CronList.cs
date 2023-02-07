@@ -1,4 +1,6 @@
 ﻿using System.Collections;
+using System.ComponentModel;
+using System.Text;
 using NCrontab;
 
 namespace Crontab.Net;
@@ -11,22 +13,38 @@ public class CronList
     {
     }
 
-    public static async Task<CronList> From(string cronTab)
+    public static async Task<CronList> FromAsync(string cronTab)
     {
-        List<(string Cron, string Task)> Items = new List<(string Cron, string Task)>();
+        List<(string Cron, string Task)> items = new List<(string Cron, string Task)>();
         string textLine;
-        using (StringReader reader = new StringReader(cronTab))
+
+        using StringReader reader = new StringReader(cronTab);
+        while ((textLine = await reader.ReadLineAsync()) != null)
         {
-            while ((textLine = await reader.ReadLineAsync()) != null)
+            if (!textLine.StartsWith('#'))
             {
-                if (!textLine.StartsWith('#'))
-                {
-                    Items.Add(SplitValues(textLine));
-                }
+                items.Add(SplitValues(textLine));
             }
         }
 
-        return new CronList() {  Items =  Items };
+        return new CronList() {  Items =  items };
+    }
+
+    public string ToCronTab()
+    {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        foreach (var cronTabItem in Items)
+        {
+            stringBuilder.AppendLine($"{cronTabItem.Cron} {cronTabItem.Task}");
+        }
+        
+        return stringBuilder.ToString();
+    }
+
+    public void AddCronTab(string cron, string task)
+    {
+        Items.Add((cron,task));
     }
 
     public static (string CronPart, string TaskPart) SplitValues(string cronRow)

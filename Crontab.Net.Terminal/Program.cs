@@ -1,4 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using Crontab.Net;
 
 using System.Runtime.InteropServices;
 using System.Text;
@@ -9,17 +10,18 @@ Console.WriteLine("Hello, World!234324");
 
 Console.WriteLine(RuntimeInformation.RuntimeIdentifier);
 
-var stringBuilder = new StringBuilder();
+CronTabWrapper wrapper = new CronTabWrapper();
+var result = await wrapper.ListAsync(); 
+//var result = await wrapper.WriteAsync("drakon_cron");
+Console.WriteLine(result.ExitCode);
+Console.WriteLine(result.Output);
 
-var result = await Cli.Wrap("crontab")
-    .WithArguments("-l")
-    .WithWorkingDirectory("").WithStandardOutputPipe(PipeTarget.ToStringBuilder(stringBuilder))
-    .ExecuteAsync();
+var cronList = await CronList.FromAsync(result.Output);
+var items = cronList.Items;
 
-string readText;
-
-
-NCrontab.CrontabSchedule.Parse("");
-
-Console.WriteLine(stringBuilder.ToString());
+cronList.AddCronTab("* * * * *", "echo \"1\" > /Users/drakon660/Desktop/12.txt");
+//* * * * * echo "1" > /Users/drakon660/Desktop/28.txt
+var cronOut = cronList.ToCronTab();
+var result1 = await wrapper.WriteTextAsync(cronOut);
+Console.WriteLine(result.Output);
 
