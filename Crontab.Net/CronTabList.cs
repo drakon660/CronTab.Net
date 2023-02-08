@@ -1,19 +1,18 @@
 ﻿using System.Collections;
-using System.ComponentModel;
 using System.Text;
 using NCrontab;
 
 namespace Crontab.Net;
 
-public class CronList
+public class CronTabList : IReadOnlyCollection<(string,string)>
 {
     public List<(string Cron, string Task)> Items = new List<(string Cron, string Task)>();
 
-    private CronList()
+    private CronTabList()
     {
     }
 
-    public static async Task<CronList> FromAsync(string cronTab)
+    public static async Task<CronTabList> FromAsync(string cronTab)
     {
         List<(string Cron, string Task)> items = new List<(string Cron, string Task)>();
         string textLine;
@@ -26,8 +25,8 @@ public class CronList
                 items.Add(SplitValues(textLine));
             }
         }
-
-        return new CronList() {  Items =  items };
+        
+        return new CronTabList() {  Items =  items };
     }
 
     public string ToCronTab()
@@ -44,7 +43,10 @@ public class CronList
 
     public void AddCronTab(string cron, string task)
     {
-        Items.Add((cron,task));
+        CrontabSchedule crontabSchedule = CrontabSchedule.TryParse(cron);
+        
+        if(crontabSchedule is not null)
+            Items.Add((cron,task));
     }
 
     public static (string CronPart, string TaskPart) SplitValues(string cronRow)
@@ -55,4 +57,20 @@ public class CronList
 
         return (string.Join(" ", cronPart), string.Join(" ", taskPart));
     }
+
+    public IEnumerator<(string, string)> GetEnumerator()
+    {
+        foreach (var item in Items)
+        {
+            yield return item;
+        }
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
+
+    public int Count { get; }
 }
+

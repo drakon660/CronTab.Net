@@ -16,12 +16,15 @@ var result = await wrapper.ListAsync();
 Console.WriteLine(result.ExitCode);
 Console.WriteLine(result.Output);
 
-var cronList = await CronList.FromAsync(result.Output);
-var items = cronList.Items;
+var cronList = await CronTabList.FromAsync(result.Output);
+//var items = cronList.Items;
 
-cronList.AddCronTab("* * * * *", "echo \"1\" > /Users/drakon660/Desktop/12.txt");
+//cronList.AddCronTab("* * * * *", "echo \"1\" > /Users/drakon660/Desktop/12.txt");
 //* * * * * echo "1" > /Users/drakon660/Desktop/28.txt
-var cronOut = cronList.ToCronTab();
-var result1 = await wrapper.WriteTextAsync(cronOut);
-Console.WriteLine(result.Output);
+//var cronOut = cronList.ToCronTab();
+//var result1 = await wrapper.WriteTextAsync(cronOut);
+//Console.WriteLine(result.Output);
+
+CrontabSchedule crontabSchedule = CrontabSchedule.TryParse("sdsdsd");
+var t = 0;
 

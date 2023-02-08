@@ -7,7 +7,7 @@ public class CronTabWrapper
 {
     public async Task<(int ExitCode, string Output)> WriteTextAsync(string cronTab)
     {
-        string tempFile = "cron1";
+        string tempFile = Path.GetTempFileName();
         
         if (!cronTab.EndsWith(Environment.NewLine))
         {
@@ -29,7 +29,7 @@ public class CronTabWrapper
         }
         finally
         {
-            //File.Delete(tempFile);
+            File.Delete(tempFile);
         }
         return (-1, outputBuilder.ToString());
     }
