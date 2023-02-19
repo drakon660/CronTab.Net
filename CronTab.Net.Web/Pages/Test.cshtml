@@ -4,9 +4,13 @@
 @{
     string data1 = "Kraków";
     string data2 = "John Doe";
+    string[] columnes = new[] { "Id" };
+    object[] values = new Object[] { 12 };
 }
-
-<tabler-grid for-city="@data1" for-customername="@data2">
-    
-</tabler-grid>
+<p>tutaj2</p>
+<tabler-table>
+    <tabler-head for-columns="columnes">
+    </tabler-head>
+    <tabler-body for-rows="values"></tabler-body>
+</tabler-table>
 

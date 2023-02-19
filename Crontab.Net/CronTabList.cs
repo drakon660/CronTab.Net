@@ -8,7 +8,7 @@ public class CronTabList : IReadOnlyCollection<(string,string)>
 {
     public List<(string Cron, string Task)> Items = new List<(string Cron, string Task)>();
 
-    private CronTabList()
+    public CronTabList()
     {
     }
 

@@ -13,4 +13,8 @@
       </Content>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Crontab.Net\Crontab.Net.csproj" />
+    </ItemGroup>
+
 </Project>
