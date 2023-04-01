@@ -1,8 +1,23 @@
 ﻿@page
 @model CronList
 
-@foreach (var item in Model.CronTabList.Items)
-{
-    <p>@item.Cron</p>
-}
 
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Crontab</h3>
+    </div>
+    <tabler-table>
+        <tabler-table-columns source="@Model.Columns">
+        </tabler-table-columns>
+        <tabler-table-rows>
+            @foreach (var item in @Model.CronTabList)
+            {
+                <tr>
+                    <td>@item.Cron.ToString()</td>
+                    <td>@item.Cron.GetNextOccurrence(DateTime.Now).ToString("yyyy-MM-dd HH:mm:ss")</td>
+                    <td>@item.Task</td>
+                </tr>
+            }
+        </tabler-table-rows>
+    </tabler-table>
+</div>

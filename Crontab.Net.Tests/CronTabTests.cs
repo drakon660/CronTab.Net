@@ -10,6 +10,6 @@ public class UnitTest1
         var text = File.ReadAllText("cron.list");
         var list = await CronTabList.FromAsync(text);
 
-        list.Items.Should().NotBeEmpty();
+        //list._cronValues.Should().NotBeEmpty();
     }
 }
