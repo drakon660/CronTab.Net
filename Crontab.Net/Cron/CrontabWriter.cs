@@ -1,9 +1,9 @@
 using System.Text;
 using CliWrap;
 
-namespace Crontab.Net;
+namespace Crontab.Net.Cron;
 
-public class CronTabWrapper
+public sealed class CrontabWriter : ICrontabWriter
 {
     public async Task<(int ExitCode, string Output)> WriteTextAsync(string cronTab)
     {
@@ -78,7 +78,7 @@ public class CronTabWrapper
         return (-1, outputBuilder.ToString());
     }
 
-    public async Task<(int, string)> DeleteAsync()
+    public async Task<(int ExitCode, string Output)> DeleteAsync()
     {
         StringBuilder outputBuilder = new StringBuilder();
         

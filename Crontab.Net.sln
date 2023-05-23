@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crontab.Net.Tests", "Cronta
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CronTab.Net.Web", "CronTab.Net.Web\CronTab.Net.Web.csproj", "{5FA840A8-5AB3-4340-84E3-85180297A7FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crontab.Net.Api", "Crontab.Net.Api\Crontab.Net.Api.csproj", "{67183634-114C-46B6-84D7-E859C9CA6B91}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,5 +33,9 @@ Global
 		{5FA840A8-5AB3-4340-84E3-85180297A7FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FA840A8-5AB3-4340-84E3-85180297A7FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FA840A8-5AB3-4340-84E3-85180297A7FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67183634-114C-46B6-84D7-E859C9CA6B91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67183634-114C-46B6-84D7-E859C9CA6B91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67183634-114C-46B6-84D7-E859C9CA6B91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67183634-114C-46B6-84D7-E859C9CA6B91}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

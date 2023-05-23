@@ -8,13 +8,13 @@ Console.WriteLine("Hello, World!234324");
 
 Console.WriteLine(RuntimeInformation.RuntimeIdentifier);
 
-CronTabWrapper wrapper = new CronTabWrapper();
-var result = await wrapper.ListAsync(); 
-//var result = await wrapper.WriteAsync("drakon_cron");
-Console.WriteLine(result.ExitCode);
-Console.WriteLine(result.Output);
+// CrontabWriter writer = new CrontabWriter();
+// var result = await writer.ListAsync(); 
+// //var result = await wrapper.WriteAsync("drakon_cron");
+// Console.WriteLine(result.ExitCode);
+// Console.WriteLine(result.Output);
 
-var cronList = await CronTabList.FromAsync(result.Output);
+//var cronList = await CrontabList.FromAsync(result.Output);
 
 //var items = cronList.Items;
 

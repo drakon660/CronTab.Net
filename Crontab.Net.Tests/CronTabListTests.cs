@@ -23,14 +23,14 @@ public class CronTabListTests
     [Fact]
     public async Task Check_Count()
     {
-        CronTabList cronTabList = await CronTabList.FromAsync(_crontab);
-        cronTabList.Count.Should().Be(10);
+        CrontabList crontabList = await CrontabList.FromAsync(_crontab);
+        crontabList.Count.Should().Be(10);
     }
     
     [Fact]
     public async Task Check_List()
     {
-       var cronTabList = await CronTabList.FromAsync(_crontab);
+       var cronTabList = await CrontabList.FromAsync(_crontab);
         cronTabList.Should().BeEquivalentTo(new List<(CrontabSchedule,string)>()
         {
             ("* * * * *".ToCron(), "sh run cos"),
@@ -49,7 +49,7 @@ public class CronTabListTests
     [Fact]
     public async Task Check_Add_As_Last()
     {
-        var cronTabList = await CronTabList.FromAsync(_crontab);
+        var cronTabList = await CrontabList.FromAsync(_crontab);
         var item = (CrontabSchedule.Parse("0 0 3 * *"), "sh -1 das");
         cronTabList.Add(item);
 
@@ -60,7 +60,7 @@ public class CronTabListTests
     [Fact]
     public async Task Check_Add_On_Position()
     {
-        var cronTabList = await CronTabList.FromAsync(_crontab);
+        var cronTabList = await CrontabList.FromAsync(_crontab);
         var item = (CrontabSchedule.Parse("0 0 3 * *"), "sh -1 das");
         var removed = ("0 2 * * 1-5".ToCron(), "python /path/to/my/script.py");
         cronTabList.Insert(2, item);
@@ -75,7 +75,7 @@ public class CronTabListTests
     [Fact]
     public async Task Check_Remove_At_Position()
     {
-        var cronTabList = await CronTabList.FromAsync(_crontab);
+        var cronTabList = await CrontabList.FromAsync(_crontab);
         cronTabList.RemoveAt(2);
 
         cronTabList.Count.Should().Be(9);
