@@ -25,14 +25,19 @@ public class CrontabController : ControllerBase
     }
 
     [HttpPost("insert")]
-    public IActionResult Insert([FromBody] CrontabItemInsertDto crontabItemDto) =>
-        Ok(_mediator.Send(new CrontabInsertRequest { CrontabItemDto = crontabItemDto }));
-
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public IActionResult Insert([FromBody] CrontabItemInsertDto crontabItemDto)
+    {
+        _mediator.Send(new CrontabInsertRequest { CrontabItemDto = crontabItemDto });
+        return NoContent();
+    }
+    
     [HttpPut("update")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
     public IActionResult Update([FromBody] CrontabItemUpdateDto crontabItemDto)
     {
         _mediator.Send(new CrontabUpdateRequest { CrontabItemDto = crontabItemDto });
-        return Ok();
+        return NoContent();
     }
 
     [HttpDelete("delete")]
@@ -40,12 +45,13 @@ public class CrontabController : ControllerBase
     public IActionResult Delete(int index)
     {
         _mediator.Send(new CrontabDeleteRequest(index));
-        return Ok();
+        return NoContent();
     }
 
     [HttpDelete("clear")]
     public IActionResult Clear()
     {
-        throw new NotImplementedException();
+        _mediator.Send(new CrontabDeleteRequest(-1));
+        return NoContent();
     }
 }

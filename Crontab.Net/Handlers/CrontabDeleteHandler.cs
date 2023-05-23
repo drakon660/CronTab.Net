@@ -8,16 +8,18 @@ public class CrontabDeleteHandler : CrontabHandlerBase, IRequestHandler<CrontabD
     public CrontabDeleteHandler(ICrontabWriter crontabWriter) : base(crontabWriter)
     {
     }
-    
+
     public async Task Handle(CrontabDeleteRequest request, CancellationToken cancellationToken)
     {
         var crontabList = await GetCrontab();
-        
-        crontabList.RemoveAt(request.Index);
+
+        if (request.Index == -1)
+            crontabList.Clear();
+        else
+            crontabList.RemoveAt(request.Index);
 
         await WriteCrontab(crontabList);
     }
 }
 
 public record CrontabDeleteRequest(int Index) : IRequest;
-
