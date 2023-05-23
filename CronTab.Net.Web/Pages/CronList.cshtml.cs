@@ -15,10 +15,10 @@ public class CronList : PageModel
         
         //CronTabList = await CronTabList.FromAsync(result.Output);
 
-        var cronlist  = new CronTabList();
-        cronlist.AddCronTab("* * * * *", "echo 111");
+        //var cronlist  = new CronTabList();
+        //cronlist.AddCronTab("* * * * *", "echo 111");
 
-        CronTabList = cronlist; 
+        //CronTabList = cronlist; 
         
         return Page();
     }

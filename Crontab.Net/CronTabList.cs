@@ -167,7 +167,7 @@ public class CronTabList : IList<(CrontabSchedule Cron, string Task)>
                         "\n0 8,16 * * 1-5 /usr/bin/python3 /path/to/my/script.py >> /var/log/mylog.log 2>&1";
 
     private readonly List<(CrontabSchedule Cron, string Task)> _cronValues;
-    private readonly EqualityComparer<CrontabSchedule> _comparer = new EqualityComparer<CrontabSchedule>();
+    private readonly EqualityComparer<CrontabSchedule> _comparer = new ();
 
     private CronTabList(List<(CrontabSchedule Cron, string Task)> values)
     {
