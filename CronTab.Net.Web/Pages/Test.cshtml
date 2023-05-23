@@ -4,13 +4,12 @@
 @{
     string data1 = "Kraków";
     string data2 = "John Doe";
-    string[] columnes = new[] { "Id","Name" };
-    dynamic[] values = new [] { new { Id = 12, Name = "Drakon"} };
-    string[] items = new[] { "Delete", "Edit" };
+    string[] columns = new[] { "Cron","Value" };
+    dynamic[] values = new[] { new { Id = 12, Name = "Drakon" } };
 }
 <p>tutaj2</p>
 <tabler-table>
-    <tabler-table-columns source="columnes">
+    <tabler-table-columns source="columns">
     </tabler-table-columns>
     <tabler-table-rows>
     @foreach (var item in values)
@@ -22,11 +21,3 @@
     }
     </tabler-table-rows>
 </tabler-table>
-
-<tabler-dropdown for-items="items"></tabler-dropdown>
-
-@* <span class="dropdown"><button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown" aria-expanded="false">Actions2</button> *@
-@* <div class="dropdown-menu dropdown-menu-end" style=""> *@
-@* <a class="dropdown-item" href="#">Delete</a><a class="dropdown-item" href="#">Edit</a></div> *@
-@* </span> *@
-

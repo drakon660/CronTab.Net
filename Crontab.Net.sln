@@ -1,5 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+#
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crontab.Net", "Crontab.Net\Crontab.Net.csproj", "{C43D85D3-46B9-4090-9F9C-362573A92ED2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crontab.Net.Terminal", "Crontab.Net.Terminal\Crontab.Net.Terminal.csproj", "{8DF97549-EC2F-4C5C-9C94-5E99BDB6F630}"

@@ -2,8 +2,6 @@
 using Crontab.Net;
 
 using System.Runtime.InteropServices;
-using System.Text;
-using CliWrap;
 using NCrontab;
 
 Console.WriteLine("Hello, World!234324");
