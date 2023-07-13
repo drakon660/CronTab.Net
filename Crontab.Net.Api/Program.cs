@@ -26,7 +26,7 @@ builder.Services.AddAuthentication(x =>
 });
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy(IdentityData.AdminUserPolicyName, policy=>policy.RequireClaim(IdentityData.AdminUserClaimName));
+    options.AddPolicy(IdentityData.AdminUserPolicyName, policy=>policy.RequireClaim(IdentityData.AdminUserClaimName, "true"));
 });
 // Add services to the container.
 
