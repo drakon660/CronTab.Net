@@ -1,0 +1,14 @@
+### Get standard token
+POST https://localhost:7269/identity
+Content-Type: application/json
+
+{
+  "email": "drakon660@gmail.com",
+  "userId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+}
+> {% client.global.set("auth_token", response.body); %}
+
+### Get Data with bearer token
+
+GET https://localhost:7159/cron-tab
+Authorization: Bearer {{auth_token}}

@@ -18,12 +18,11 @@ public sealed class CrontabList : IList<(CrontabSchedule Cron, string Task)>
     public static async Task<CrontabList> FromAsync(string cronTab)
     {
         var items = new List<(CrontabSchedule Cron, string Task)>();
-        string textLine;
 
         using StringReader reader = new StringReader(cronTab);
-        while ((textLine = await reader.ReadLineAsync()) != null)
+        while (await reader.ReadLineAsync() is { } textLine)
         {
-            if (!textLine.StartsWith(CommentSign))
+            if (!textLine.StartsWith(CommentSign) && !string.IsNullOrWhiteSpace(textLine))
             {
                 items.Add(SplitValues(textLine));
             }

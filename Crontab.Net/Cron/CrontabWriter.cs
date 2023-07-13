@@ -64,10 +64,7 @@ public sealed class CrontabWriter : ICrontabWriter
         {
             var result = await Cron("-l", in outputBuilder)
                 .ExecuteAsync();
-
-            if (result is null)
-                return (-1, outputBuilder.ToString());
-
+            
             return (result.ExitCode, outputBuilder.ToString());
         }
         catch

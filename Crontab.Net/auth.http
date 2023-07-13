@@ -1,0 +1,21 @@
+### Get admin token
+POST https://localhost:7269/identity/admin
+Content-Type: application/json
+
+{
+  "email": "drakon660@gmail.com",
+  "userId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+}
+> {% client.global.set("auth_token", response.body); %}
+
+### Insert cron
+
+POST https://localhost:7159/cron-tab/insert
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+{
+  "index": -1,
+  "cron": "* * * * *",
+  "task": "chuj"
+}

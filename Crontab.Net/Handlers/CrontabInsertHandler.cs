@@ -1,4 +1,5 @@
-﻿using Crontab.Net.Cron;
+﻿using System.Text.Json;
+using Crontab.Net.Cron;
 using MediatR;
 using NCrontab;
 
@@ -20,6 +21,10 @@ public class CrontabInsertHandler : CrontabHandlerBase, IRequestHandler<CrontabI
             crontabList.Insert(request.CrontabItemDto.Index,
                 (CrontabSchedule.Parse(request.CrontabItemDto.Cron), request.CrontabItemDto.Task));
 
+        string jsonString = JsonSerializer.Serialize<object>(new { });
+
+
+        
         await WriteCrontab(crontabList);
     }
 }
