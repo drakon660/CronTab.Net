@@ -8,6 +8,6 @@ Content-Type: application/json
 }
 > {% client.global.set("auth_token", response.body); %}
 
-### Get Data with bearer toke
-GET https://localhost:7159/cron-tab
+### Get Data with bearer token
+DELETE https://localhost:7159/cron-tab/delete?index=0
 Authorization: Bearer {{auth_token}}

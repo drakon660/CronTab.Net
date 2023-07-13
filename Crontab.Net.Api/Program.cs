@@ -1,8 +1,12 @@
+using System.Reflection;
 using System.Text;
 using Crontab;
 using Crontab.Net;
+using Crontab.Net.Api.Swagger;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
@@ -28,11 +32,13 @@ builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy(IdentityData.AdminUserPolicyName, policy=>policy.RequireClaim(IdentityData.AdminUserClaimName, "true"));
 });
+
 // Add services to the container.
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
 builder.Services.AddSwaggerGen();
 builder.Services.AddCrontabNet();
 

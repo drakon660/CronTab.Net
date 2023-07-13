@@ -43,6 +43,8 @@ public class CrontabController : ControllerBase
     }
 
     [HttpDelete("delete")]
+    [Authorize]
+    [RequireClaim(IdentityData.AdminUserClaimName,"true")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     public IActionResult Delete(int index)
     {
