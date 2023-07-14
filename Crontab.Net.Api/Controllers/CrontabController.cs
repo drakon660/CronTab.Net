@@ -1,10 +1,12 @@
 ﻿using Crontab.Net.Handlers;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Crontab.Net.Api.Controllers;
 
 [ApiController]
+[Authorize]
 [Route("cron-tab")]
 public class CrontabController : ControllerBase
 {
@@ -20,11 +22,11 @@ public class CrontabController : ControllerBase
     public async Task<IActionResult> GetAll()
     {
         var result = await _mediator.Send(new CrontabListRequest());
-
         return Ok(result);
     }
 
     [HttpPost("insert")]
+    [Authorize(IdentityData.AdminUserPolicyName)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     public IActionResult Insert([FromBody] CrontabItemInsertDto crontabItemDto)
     {
@@ -41,6 +43,8 @@ public class CrontabController : ControllerBase
     }
 
     [HttpDelete("delete")]
+    [Authorize]
+    [RequireClaim(IdentityData.AdminUserClaimName,"true")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     public IActionResult Delete(int index)
     {
