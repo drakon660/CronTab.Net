@@ -13,6 +13,7 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="home" element={<Home />} />
           <Route path="*" element={<p>There's nothing here: 404!</p>} />
+          {/* <Route path="/*" element={<Home/>} /> */}
         </Routes>
       </BrowserRouter>
     </React.StrictMode>
