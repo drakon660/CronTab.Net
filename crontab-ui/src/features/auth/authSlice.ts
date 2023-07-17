@@ -1,14 +1,14 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import *  as identityApi from "../../app/api/identityApi";
+import { Cron, User } from "../../app/api/interfaces";
 
 export const authUser = createAsyncThunk(
   'auth/token',
-  async () => {
-    const response = await identityApi.authUser()
+  async (user: User) => {
+    const response = await identityApi.authUser(user);
     return response;
   }
 )
-
 
 interface AuthPayload {
   //user: string | null,
@@ -16,27 +16,28 @@ interface AuthPayload {
 }
 
 interface AuthState {
+  cron: Cron[],
   user: string | null,
   token: string | null
 }
 
 // Define the initial state using that type
 const initialState: AuthState = {
+  cron: [],
   user: null,
   token: null
 }
 
-
 const authSlice = createSlice({
   name: 'auth',
   initialState: initialState,
-  reducers:{
+  reducers: {
 
   },
   extraReducers: (builder) => {
-    builder.addCase(authUser.fulfilled, (state, action : PayloadAction<string>) => {
+    builder.addCase(authUser.fulfilled, (state, action: PayloadAction<string>) => {
       state.token = action.payload;
-    })   
+    });
   }
   // reducers: {
   //   setCredentials: (state, action: PayloadAction<AuthPayload>) => {

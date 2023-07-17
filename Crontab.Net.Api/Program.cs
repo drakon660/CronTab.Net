@@ -1,4 +1,3 @@
-using System.Reflection;
 using System.Text;
 using Crontab;
 using Crontab.Net;
@@ -9,6 +8,14 @@ using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        policy  =>
+        {
+            policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+        });
+});
 var config = builder.Configuration;
 builder.Services.AddAuthentication(x =>
 {
@@ -25,6 +32,7 @@ builder.Services.AddAuthentication(x =>
         ValidateIssuer = true,
         ValidateAudience = true,
         ValidateLifetime = true,
+        ClockSkew = TimeSpan.FromSeconds(0),
         ValidateIssuerSigningKey = true
     };
 });
@@ -53,6 +61,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseCors();
 app.UseAuthentication();
 app.UseAuthorization();
 

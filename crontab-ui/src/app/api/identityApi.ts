@@ -1,14 +1,16 @@
 import axios from "axios";
+import { User } from "./interfaces";
 
-axios.defaults.baseURL = "https://localhost:7269";
+export const axiosIdentity = axios.create({
+  baseURL: "https://localhost:7269",
+  headers: {
+    'Content-Type': 'application/json'
+  }
+});
 
-export const authUser = async() =>
-{
-    const { data }  = await axios.post<string>('/user', {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
 
-    return data;
+export const authUser = async (user: User) => {
+  const { data } = await axiosIdentity.post<string>('/identity', user);
+  return data;
 }
+

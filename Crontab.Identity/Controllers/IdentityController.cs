@@ -11,7 +11,7 @@ namespace Crontab.Identity.Controllers;
 public class IdentityController : ControllerBase
 {
     private const string TokenSecret = "KissMyAssMotherFucker";
-    private static readonly TimeSpan TokenLifeTime = TimeSpan.FromMinutes(1);
+    private static readonly TimeSpan TokenLifeTime = TimeSpan.FromSeconds(30);
 
     [HttpPost]
     public IActionResult GenerateToken([FromBody] TokenGenerationRequest request)
