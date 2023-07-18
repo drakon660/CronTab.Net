@@ -6,11 +6,9 @@ import { Cron } from "../../app/api/interfaces";
 export const getCron = createAsyncThunk<Cron[], undefined, { state : RootState}>(
     'crontab/all',
     async (_, thunkApi) => {
-      const auth =  thunkApi.getState().auth;
-      console.log(auth.token);
       //const stateItem = state.getState();
       //console.log(stateItem.auth.token);
-      const response = await cronApi.getCron(auth.token!);
+      const response = await cronApi.getCron();
       return response;
     }
   )
