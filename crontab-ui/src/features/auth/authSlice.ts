@@ -10,6 +10,14 @@ export const authUser = createAsyncThunk(
   }
 )
 
+export const refreshUser = createAsyncThunk(
+  'auth/refresh-token',
+  async () => {
+    const response = await identityApi.refreshTokenUser();
+    return response;
+  }
+)
+
 interface AuthPayload {
   //user: string | null,
   token: string | null
@@ -36,6 +44,9 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(authUser.fulfilled, (state, action: PayloadAction<string>) => {
+      state.token = action.payload;
+    });
+    builder.addCase(refreshUser.fulfilled, (state, action: PayloadAction<string>) => {
       state.token = action.payload;
     });
   }

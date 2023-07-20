@@ -8,6 +8,7 @@ const Login = () => {
     const dispatch = useAppDispatch();
     const cron:Cron[] = useAppSelector(selectCron);
 
+    console.log("render");
     useEffect(() => {
        
 
@@ -17,7 +18,6 @@ const Login = () => {
 
         let user:User = {
             "email":"drakon660@gmail,com",
-            "userId": "3026C425-C87B-463E-A14D-873E98BABB05",
           }
       
         dispatch(authUser(user));

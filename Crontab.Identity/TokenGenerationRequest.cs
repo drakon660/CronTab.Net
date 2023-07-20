@@ -1,3 +1,3 @@
 namespace Crontab.Identity;
 
-public record TokenGenerationRequest(string Email, Guid UserId);
+public record TokenGenerationRequest(string Email);

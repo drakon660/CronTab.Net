@@ -23,4 +23,8 @@
       <ProjectReference Include="..\Crontab\Crontab.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ReferencePathWithRefAssemblies Update="\Users\drakon660\.nuget\packages\system.identitymodel.tokens.jwt\6.15.1\lib\netstandard2.0\System.IdentityModel.Tokens.Jwt.dll" />
+    </ItemGroup>
+
 </Project>

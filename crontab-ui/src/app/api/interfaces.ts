@@ -6,6 +6,5 @@ export interface Cron {
 
 export interface User {
     email: string,
-    userId: string
   }
   

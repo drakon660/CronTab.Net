@@ -35,6 +35,18 @@ builder.Services.AddAuthentication(x =>
         ClockSkew = TimeSpan.FromSeconds(0),
         ValidateIssuerSigningKey = true
     };
+    x.Events = new ()
+    {
+        OnMessageReceived = context =>
+        {
+            if (context.Request.Cookies.ContainsKey("X-Access-Token"))
+            {
+                context.Token = context.Request.Cookies["X-Access-Token"];
+            }
+
+            return Task.CompletedTask;
+        }
+    };
 });
 builder.Services.AddAuthorization(options =>
 {
