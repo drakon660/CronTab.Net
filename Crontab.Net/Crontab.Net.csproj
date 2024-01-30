@@ -1,16 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>disable</Nullable>
+        <LangVersion>12</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="CSharpFunctionalExtensions" Version="2.38.1" />
-        <PackageReference Include="MediatR" Version="12.0.1" />
-        <PackageReference Include="NCrontab.Signed" Version="3.3.2" />
-        <PackageReference Include="CliWrap" Version="3.6.0" />
+        <PackageReference Include="CSharpFunctionalExtensions" Version="2.40.3" />
+        <PackageReference Include="MediatR" Version="12.2.0" />
+        <PackageReference Include="NCrontab.Signed" Version="3.3.3" />
+        <PackageReference Include="CliWrap" Version="3.6.6" />
     </ItemGroup>
     
 </Project>
