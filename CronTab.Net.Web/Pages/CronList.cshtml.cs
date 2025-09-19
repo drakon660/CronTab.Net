@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using Crontab.Net;
+﻿using Crontab.Net;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -7,15 +6,15 @@ namespace CronTab.Net.Web.Pages;
 
 public class CronList : PageModel
 {
-    public CronTabList? CronTabList { get; set; } = default;
+    public CrontabList CronTabList { get; set; }
     public async Task<IActionResult> OnGetAsync()
     {
         //CronTabWrapper wrapper = new CronTabWrapper();
         //var result = await wrapper.ListAsync(); 
         
-        //CronTabList = await CronTabList.FromAsync(result.Output);
+        //CronTabList = await CrontabList.FromAsync(result.Output);
 
-        //var cronlist  = new CronTabList();
+        //var cronlist  = new CrontabList();
         //cronlist.AddCronTab("* * * * *", "echo 111");
 
         //CronTabList = cronlist; 
