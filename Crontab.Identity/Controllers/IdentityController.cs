@@ -10,9 +10,16 @@ namespace Crontab.Identity.Controllers;
 [Route("identity")]
 public class IdentityController : ControllerBase
 {
-    private const string TokenSecret = "KissMyAssMotherFucker";
+    private const string TokenSecret = "AYxJciUazNIAq6JnEIvvlqy3d8TrolbFXa_gFEkhcJw";
     private static readonly TimeSpan TokenLifeTime = TimeSpan.FromMinutes(1);
 
+
+    [HttpGet]
+    public IActionResult GenerateSecurity()
+    {
+        return Ok(Hs256KeyGenerator.GenerateRandomHs256Secret());
+    }
+    
     [HttpPost]
     public IActionResult GenerateToken([FromBody] TokenGenerationRequest request)
     {
@@ -32,7 +39,7 @@ public class IdentityController : ControllerBase
             Expires = DateTime.UtcNow.Add(TokenLifeTime),
             Issuer = "https://localhost:7269",
             Audience = "https://localhost:7159",
-            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha512)
+            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256)
         };
         var token = tokenHandler.CreateToken(tokenDescriptor);
         var jwt = tokenHandler.WriteToken(token);
